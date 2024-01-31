@@ -135,5 +135,15 @@ VALUES
 
 
 ---- SQL - GROUP BY Clause
+SELECT * from employees
+SELECT * from Department
 SELECT Depid, COUNT(EmpId) as 'Number of Employees' FROM employees GROUP BY Depid;  
 SELECT Depid, COUNT(*) as 'Number of Employess' FROM employees GROUP BY Depid;
+SELECT dept.[Names] as 'Department', COUNT(emp.Empid) as 'No of Employees' FROM employees emp,Department dept WHERE emp.Depid = dept.Depid GROUP BY dept.[Names]
+
+
+
+--- SQL Server - INNER JOIN Query
+SELECT * FROM employees
+INNER JOIN Department
+ON employees.depid = Department.Depid;
