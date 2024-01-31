@@ -81,3 +81,59 @@ from sys.dm_exec_requests as r
 
 ----DELETING THE table Data : TRUNCATE TABLE table_name ( Its deletes all the data in the table )
 TRUNCATE TABLE employee
+
+
+----Filer / finding value that is ending with  certain value or alphabets 
+--- Ending with Y -> '%Y'
+--- Starting with -> 'X%'
+SELECT * FROM employee WHERE employeeName LIKE '%Y';
+
+
+--- Creating Table : Employee
+CREATE Table employees(
+    Empid int NOT NULL IDENTITY(1,1),
+    FirstName CHAR(128),
+    LastName CHAR(128),
+    Email CHAR(128),
+    PhoneNo int NOT NULL,
+    Salary int NOT NULL,
+    Depid int NOT NULL
+);
+
+SELECT * from employees
+
+
+--- Inserting Values in Table : employees
+INSERT INTO employees (FirstName, LastName, Email, PhoneNo, Salary, Depid)
+VALUES 
+    ('John', 'Doe', 'john.doe@example.com', 123456789, 50000, 1),
+    ('Jane', 'Smith', 'jane.smith@example.com', 987643210, 60000, 2),
+    ('Bob', 'Johnson', 'bob.johnson@example.com', 551234567, 75000, 1),
+    ('Alice', 'Williams', 'alice.williams@example.com', 998887777, 80000, 2),
+    ('Chris', 'Taylor', 'chris.taylor@example.com', 11223333, 70000, 1);
+
+
+
+---Create Table : Department
+CREATE Table Department(
+    Depid int NOT NULL,
+    Names CHAR(128)
+   
+);
+
+SELECT * From Department
+
+----Inserting values in Table : Department
+
+INSERT INTO Department (Depid, Names)
+VALUES 
+    (1, 'HR'),
+    (2, 'Finance'),
+    (3, 'IT'),
+    (4, 'Marketing'),
+    (5, 'Operations');
+
+
+---- SQL - GROUP BY Clause
+SELECT Depid, COUNT(EmpId) as 'Number of Employees' FROM employees GROUP BY Depid;  
+SELECT Depid, COUNT(*) as 'Number of Employess' FROM employees GROUP BY Depid;
