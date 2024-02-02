@@ -147,3 +147,60 @@ SELECT dept.[Names] as 'Department', COUNT(emp.Empid) as 'No of Employees' FROM 
 SELECT * FROM employees
 INNER JOIN Department
 ON employees.depid = Department.Depid;
+
+--- Exercise: Lab 4
+--- CREATE TABLE : employeeNew
+CREATE table employeeNew(
+employee_id int PRIMARY KEY,
+employee_name CHAR(128),
+position VARCHAR(128),
+salary INT, 
+[start_date] DATE,
+department_id INT,
+FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+);
+
+SELECT * from employeeNew
+
+--- CREATE TABLE : Departments
+CREATE Table Departments(
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(128),
+    location VARCHAR(128)
+);
+
+SELECT * from Departments
+SELECT * from employeeNew
+
+-- Inserting data into Departments table
+INSERT INTO Departments (department_id, department_name, location)
+VALUES
+(1, 'HR', 'New York'),
+(2, 'IT', 'San Francisco'),
+(3, 'Marketing', 'Los Angeles'),
+(4, 'Finance', 'Chicago'),
+(5, 'Operations', 'Dallas'),
+(6, 'Sales', 'Miami'),
+(7, 'Research and Development', 'Seattle'),
+(8, 'Customer Support', 'Denver'),
+(9, 'Legal', 'Boston'),
+(10, 'Quality Assurance', 'Austin');
+
+
+--- INSERT Value in Table : employeeNew
+INSERT INTO employeeNew (employee_id, employee_name, position, salary, start_date, department_id)
+VALUES
+(101, 'John Doe', 'Manager', 80000, '2022-01-15', 1),
+(102, 'Jane Smith', 'Developer', 70000, '2022-02-28', 2),
+(103, 'Bob Johnson', 'Marketing Specialist', 60000, '2022-03-10', 3),
+(104, 'Alice Brown', 'Financial Analyst', 75000, '2022-04-05', 4),
+(105, 'Chris Wilson', 'HR Coordinator', 55000, '2022-05-20', 1),
+(106, 'Emily Davis', 'IT Support Specialist', 65000, '2022-06-12', 2),
+(107, 'Mike Turner', 'Sales Representative', 70000, '2022-07-08', 6),
+(108, 'Sara Miller', 'Customer Service Agent', 50000, '2022-08-25', 8),
+(109, 'Tom Harris', 'Legal Counsel', 90000, '2022-09-14', 9),
+(110, 'Linda Rodriguez', 'QA Engineer', 60000, '2022-10-02', 10);
+
+
+----1. Add a column named "start_date" to the Employees table.
+ALTER table employeeNew ADD start_date DATE
